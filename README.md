@@ -25,55 +25,51 @@ A simple ranking API for gaming use cases.
 # For who want to play with this code
 ## 1. How to install dependencies 
 ```shell
-$ git clone https://github.com/kazshinohara/spanner-sqlalchemy-demo
-$ cd spanner-sqlalchemy-demo
-$ poetry install
+git clone https://github.com/kazshinohara/spanner-sqlalchemy-demo
+cd spanner-sqlalchemy-demo
+poetry install
 ```
 
 ## 2. How to do DB Migration to Cloud Spanner
 Create Cloud Spanner instance and database
 ```shell
-$ gcloud spanner instances create demo --config=regional-asia-northeast1 --description="demo" --nodes=1
-$ gcloud spanner databases create ranking --instance=demo
+gcloud spanner instances create demo --config=regional-asia-northeast1 --description="demo" --nodes=1
+gcloud spanner databases create ranking --instance=demo
 ```
 
 DB Migration
 ```shell
-$ export GOOGLE_APPLICATION_CREDENTIALS=""
-$ export PROJECT_ID=""
-$ export INSTANCE_ID=""
-$ export DATABASE_ID=""
-$ cd spanner-sqlalchemy-demo/app
-$ export PYTHONPATH=.
-$ poetry run alembic revision --autogenerate -m "Initial migration"
-$ poetry run alembic upgrade head
+export GOOGLE_APPLICATION_CREDENTIALS=""
+export PROJECT_ID=""
+export INSTANCE_ID=""
+export DATABASE_ID=""
+cd spanner-sqlalchemy-demo/app
+poetry run alembic revision --autogenerate -m "Initial migration"
+poetry run alembic upgrade head
 ```
 
 ## 3. How to start API server
 ```shell
-$ export GOOGLE_APPLICATION_CREDENTIALS=""
-$ export PROJECT_ID=""
-$ export INSTANCE_ID=""
-$ export DATABASE_ID=""
-$ cd spanner-sqlalchemy-demo
-$ poetry run uvicorn app.main:app --reload
-$ open http://127.0.0.1:8000/docs
+export GOOGLE_APPLICATION_CREDENTIALS=""
+export PROJECT_ID=""
+export INSTANCE_ID=""
+export DATABASE_ID=""
+cd spanner-sqlalchemy-demo
+poetry run uvicorn app.main:app --reload
+open http://127.0.0.1:8000/docs
 ```
 
-## 3. How to run unit test at your local machine
+## 4. How to run unit test at your local machine
 Run Cloud Spanner emulator
 ```shell
-$ docker run -p 9010:9010 -p 9020:9020 gcr.io/cloud-spanner-emulator/emulator
+docker run -p 9010:9010 -p 9020:9020 gcr.io/cloud-spanner-emulator/emulator
 ```
 
 Set up Cloud Spanner emulator
 ```shell
-$ gcloud config configurations create emulator
-$ gcloud config set auth/disable_credentials true
-$ gcloud config set project your-project-id
-$ gcloud config set api_endpoint_overrides/spanner http://localhost:9020/
-$ gcloud spanner instances create demo --config=emulator-config --description="demo" --nodes=1
-$ gcloud spanner databases create ranking --instance=demo
+cd spanner-sqlalchemy-demo/tests
+chmod u+x spanner_emulator_setup.sh
+./spanner_emulator_setup.sh
 ```
 
 Set up environment variables which are needed for the unit test
