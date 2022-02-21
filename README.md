@@ -23,12 +23,11 @@ A simple ranking API for gaming use cases.
 
 
 # For who want to play with this code
-## 1. How to install dependencies and run API
+## 1. How to install dependencies 
 ```shell
 $ git clone https://github.com/kazshinohara/spanner-sqlalchemy-demo
 $ cd spanner-sqlalchemy-demo
 $ poetry install
-$ uvicorn app.main:app --reload
 ```
 
 ## 2. How to do DB Migration to Cloud Spanner
@@ -41,6 +40,17 @@ $ cd spanner-sqlalchemy-demo/app
 $ export PYTHONPATH=.
 $ alembic revision --autogenerate -m "Initial migration"
 $ alembic upgrade head
+```
+
+## 3. How to start API server
+```shell
+$ export GOOGLE_APPLICATION_CREDENTIALS=""
+$ export PROJECT_ID=""
+$ export INSTANCE_ID=""
+$ export DATABASE_ID=""
+$ cd spanner-sqlalchemy-demo
+$ uvicorn app.main:app --reload
+$ open http://127.0.0.1:8000/docs
 ```
 
 ## 3. How to run unit test at your local machine
