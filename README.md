@@ -87,5 +87,5 @@ $ export SPANNER_EMULATOR_HOST=localhost:9010
 Run the unit test
 ```shell
 $ cd spanner-sqlalchemy-demo/tests
-$ pytest
+$ poetry run pytest
 ```
