@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "spanner-py-demo"
+name = "spanner-sqlalchemy-demo"
 version = "0.1.0"
 description = ""
 authors = ["kazshinohara <kazshinohara@gcpx.org>"]

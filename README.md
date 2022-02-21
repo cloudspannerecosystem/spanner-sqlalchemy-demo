@@ -31,6 +31,13 @@ $ poetry install
 ```
 
 ## 2. How to do DB Migration to Cloud Spanner
+Create Cloud Spanner instance and database
+```shell
+$ gcloud spanner instances create demo --config=regional-asia-northeast1 --description="Test Instance" --nodes=1
+$ gcloud spanner databases create ranking --instance=demo
+```
+
+DB Migration
 ```shell
 $ export GOOGLE_APPLICATION_CREDENTIALS=""
 $ export PROJECT_ID=""
@@ -38,8 +45,8 @@ $ export INSTANCE_ID=""
 $ export DATABASE_ID=""
 $ cd spanner-sqlalchemy-demo/app
 $ export PYTHONPATH=.
-$ alembic revision --autogenerate -m "Initial migration"
-$ alembic upgrade head
+$ poetry run alembic revision --autogenerate -m "Initial migration"
+$ poetry run alembic upgrade head
 ```
 
 ## 3. How to start API server
@@ -49,7 +56,7 @@ $ export PROJECT_ID=""
 $ export INSTANCE_ID=""
 $ export DATABASE_ID=""
 $ cd spanner-sqlalchemy-demo
-$ uvicorn app.main:app --reload
+$ poetry run uvicorn app.main:app --reload
 $ open http://127.0.0.1:8000/docs
 ```
 
