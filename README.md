@@ -28,6 +28,7 @@ A simple ranking API for gaming use cases.
 $ git clone https://github.com/kazshinohara/spanner-sqlalchemy-demo
 $ cd spanner-sqlalchemy-demo
 $ poetry install
+$ uvicorn app.main:app --reload
 ```
 
 ## 2. How to do DB Migration to Cloud Spanner
