@@ -4,8 +4,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 PROJECT_ID = environ.get("PROJECT_ID")
-INSTANCE_NAME = environ.get("INSTANCE_NAME")
-DATABASE_NAME = environ.get("DATABASE_NAME")
+INSTANCE_ID = environ.get("INSTANCE_ID")
+DATABASE_ID = environ.get("DATABASE_ID")
 SQL_LOG = environ.get("SQL_LOG")
 
 if SQL_LOG:
@@ -13,7 +13,7 @@ if SQL_LOG:
     logging.basicConfig()
     logging.getLogger("sqlalchemy.engine").setLevel(logging.INFO)
 
-DATABASE_URL = "spanner:///projects/" + PROJECT_ID + "/instances/" + INSTANCE_NAME + "/databases/" + DATABASE_NAME
+DATABASE_URL = "spanner:///projects/" + PROJECT_ID + "/instances/" + INSTANCE_ID + "/databases/" + DATABASE_ID
 engine = create_engine(DATABASE_URL)
 
 # TODO: resolve an error | `staleness` option can't be changed while a transaction is in progress.
