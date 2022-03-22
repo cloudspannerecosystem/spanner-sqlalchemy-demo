@@ -9,6 +9,8 @@ def get_user(db: Session, user_id: str):
 
 
 def get_users(db: Session,  skip: int = 0, limit: int = 1000):
+    # read-only transaction
+    # db.connection(execution_options={"read_only": True})
     return db.query(models.Users).offset(skip).limit(limit).all()
 
 
