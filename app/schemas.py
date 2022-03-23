@@ -8,7 +8,7 @@ class UsersBase(BaseModel):
 
 
 class Users(UsersBase):
-    id: str
+    user_id: str
     created_at: datetime
     updated_at: Optional[datetime]
 
@@ -22,7 +22,7 @@ class ScoresBase(BaseModel):
 
 
 class Scores(ScoresBase):
-    id: str
+    score_id: str
     created_at: datetime
     updated_at: Optional[datetime]
 

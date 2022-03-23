@@ -11,8 +11,8 @@ from app.models import Base
 
 
 PROJECT_ID = environ["PROJECT_ID"]
-INSTANCE_NAME = environ["INSTANCE_NAME"]
-DATABASE_NAME = environ["DATABASE_NAME"]
+INSTANCE_ID = environ["INSTANCE_ID"]
+DATABASE_ID = environ["DATABASE_ID"]
 
 
 class TestingSession(Session):
@@ -25,8 +25,8 @@ class TestingSession(Session):
 @pytest.fixture(scope="function")
 def test_db():
     # 1. SetUp
-    engine = create_engine("spanner:///projects/your-project-id/instances/"
-                           + INSTANCE_NAME + "/databases/" + DATABASE_NAME)
+    engine = create_engine("spanner:///projects/" + PROJECT_ID + "/instances/"
+                           + INSTANCE_ID + "/databases/" + DATABASE_ID)
     Base.metadata.create_all(bind=engine)
 
     TestSessionLocal = sessionmaker(class_=TestingSession, autocommit=False, autoflush=False, bind=engine)
