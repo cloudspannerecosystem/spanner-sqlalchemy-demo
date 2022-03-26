@@ -3,13 +3,14 @@ This is a demo application for [Cloud Spanner SQLAlchemy ORM](https://github.com
 A simple ranking API for gaming use cases.
 
 ## Building blocks
-* Language: Python 3
-* Framework: FastAPI
-* ORM: SQLAlchemy
-* Migration tool: Alembic
-* Server: Cloud Run
-* DB: Cloud Spanner
-* CI/CD: Cloud Build
+* Language: [Python 3](https://docs.python.org/3/)
+* Framework: [FastAPI](https://fastapi.tiangolo.com/)
+* ORM: [SQLAlchemy](https://www.sqlalchemy.org/)
+* Migration tool: [Alembic](https://alembic.sqlalchemy.org/en/latest/)
+* Server: [Cloud Run](https://cloud.google.com/run/)
+* DB: [Cloud Spanner](https://cloud.google.com/spanner/)
+* Container registry: [Artifact Registry](https://cloud.google.com/artifact-registry/)
+* CI/CD: [Cloud Build](https://cloud.google.com/build/) 
 
 
 ## TODO
@@ -19,7 +20,7 @@ A simple ranking API for gaming use cases.
 - Implement unit tests w/ Cloud Spanner emulator [DONE]
 - Containerization [DONE]
 - Deploy to Cloud Run [DONE]
-- Set up Cloud Build 
+- Set up Cloud Build (lint check, unit test, build image etc.)
 
 
 # For who want to play with this code
@@ -109,10 +110,11 @@ cd spanner-sqlalchemy-demo/tests
 poetry run pytest
 ```
 
-## 5. Create the container image and deploy it to Cloud Run
+## 5. Create the container image and deploy to Cloud Run
 *Note: The following steps need environment variables which are set at Section 2.*
 
-Set an environment variable which are needed for the following steps.
+Set an environment variable which are needed for the following steps.  
+Please make sure that you have a docker image repo at Artifact Registry.
 ```shell
 export REPOSITORY_NAME=""
 ```
@@ -121,6 +123,12 @@ Build a container image.
 ```shell
 cd spanner-sqlalchemy-demo 
 docker build -t asia-northeast1-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY_NAME}/spanner-sqlalchemy-demo:1.0.0 .
+```
+
+Push the image to Artifact Registry
+```shell
+cd spanner-sqlalchemy-demo 
+docker push asia-northeast1-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY_NAME}/spanner-sqlalchemy-demo:1.0.0
 ```
 
 Deploy the container image to Cloud Run.
