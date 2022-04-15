@@ -5,7 +5,7 @@ from app import crud, schemas
 from app.database import SessionLocal
 
 
-app = FastAPI()
+app = FastAPI(docs_url="/")
 
 
 def get_db():

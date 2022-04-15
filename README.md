@@ -81,7 +81,7 @@ poetry run alembic upgrade head
 ```shell
 cd spanner-sqlalchemy-demo
 poetry run uvicorn app.main:app --reload
-open http://127.0.0.1:8000/docs
+open http://127.0.0.1:8000/
 ```
 
 ## 4. Run unit test at your local machine
