@@ -304,6 +304,14 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "names"
+version = "0.3.0"
+description = "Generate random names"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "packaging"
 version = "21.3"
 description = "Core utilities for Python packages"
@@ -598,8 +606,8 @@ standard = ["websockets (>=10.0)", "httptools (>=0.2.0,<0.4.0)", "watchgod (>=0.
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.10"
-content-hash = "4c91d4595c845d806c75c943369ee28be3a29444c574946d6e4a74c1664d591f"
+python-versions = "^3.9"
+content-hash = "de4daafe3f0f71c6d5701017237e0bbf643d09fc469a87c923c38e4761ed6d5e"
 
 [metadata.files]
 alembic = [
@@ -805,6 +813,9 @@ markupsafe = [
     {file = "MarkupSafe-2.0.1-cp39-cp39-win32.whl", hash = "sha256:10f82115e21dc0dfec9ab5c0223652f7197feb168c940f3ef61563fc2d6beb74"},
     {file = "MarkupSafe-2.0.1-cp39-cp39-win_amd64.whl", hash = "sha256:693ce3f9e70a6cf7d2fb9e6c9d8b204b6b39897a2c4a1aa65728d5ac97dcc1d8"},
     {file = "MarkupSafe-2.0.1.tar.gz", hash = "sha256:594c67807fb16238b30c44bdf74f36c02cdf22d1c8cda91ef8a0ed8dabf5620a"},
+]
+names = [
+    {file = "names-0.3.0.tar.gz", hash = "sha256:726e46254f2ed03f1ffb5d941dae3bc67c35123941c29becd02d48d0caa2a671"},
 ]
 packaging = [
     {file = "packaging-21.3-py3-none-any.whl", hash = "sha256:ef103e05f519cdc783ae24ea4e2e0f508a9c99b2d4969652eed6a2e1ea5bd522"},
