@@ -5,8 +5,8 @@ from sqlalchemy.orm import Session
 from app import crud, schemas
 from app.database import SessionLocal
 
-APP_NAME = environ.get("K_SERVICE", "")
-APP_REVISION = environ.get("K_REVISION","")
+CLOUD_RUN_SERVICE = environ.get("K_SERVICE", "")
+CLOUD_RUN_REVISION = environ.get("K_REVISION", "")
 
 app = FastAPI(docs_url="/")
 
@@ -23,9 +23,9 @@ def get_db():
 def read_health():
     return {"health": "true"}
 
-@app.get("/run-info/")
-def read_run_info():
-    return {"name": APP_NAME, "revision": APP_REVISION}
+@app.get("/cloud-run-info/")
+def read_cloud_run_info():
+    return {"service": CLOUD_RUN_SERVICE, "revision": CLOUD_RUN_REVISION}
 
 @app.get("/users/", response_model=list[schemas.Users])
 def read_users(skip: int = 0, limit: int = 1000, db: Session = Depends(get_db)):
