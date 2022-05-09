@@ -9,7 +9,6 @@ from sqlalchemy.orm.session import close_all_sessions
 from app.main import app, get_db
 from app.models import Base
 
-
 PROJECT_ID = environ["PROJECT_ID"]
 INSTANCE_ID = environ["INSTANCE_ID"]
 DATABASE_ID = environ["DATABASE_ID"]

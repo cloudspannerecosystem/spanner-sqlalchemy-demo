@@ -2,8 +2,8 @@ import uuid
 
 from fastapi.testclient import TestClient
 
-from app.main import app
 from app import models
+from app.main import app
 
 client = TestClient(app)
 
@@ -12,6 +12,15 @@ def test_read_health():
     response = client.get("/health")
     assert response.status_code == 200
     assert response.json() == {"health": "true"}
+
+
+def test_read_cloud_run_info():
+    # Don't forget to set env vars at your test execution environment
+    # export K_SERVICE=spanner-sqlalchemy-demo
+    # export K_REVISION=spanner-sqlalchemy-demo-00001-thx
+    response = client.get("/cloud-run-info")
+    assert response.status_code == 200
+    assert response.json() == {"service": "spanner-sqlalchemy-demo", "revision": "spanner-sqlalchemy-demo-00001-thx"}
 
 
 def test_read_users(test_db):

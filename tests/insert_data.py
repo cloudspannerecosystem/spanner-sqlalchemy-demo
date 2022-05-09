@@ -9,7 +9,6 @@ from os import environ
 import names
 from google.cloud import spanner
 
-
 INSTANCE_ID = environ.get("INSTANCE_ID")
 DATABASE_ID = environ.get("DATABASE_ID")
 user_id_list = []

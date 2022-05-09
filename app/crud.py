@@ -1,6 +1,7 @@
 import uuid
 
 from sqlalchemy.orm import Session
+
 from app import models, schemas
 
 
@@ -8,7 +9,7 @@ def get_user(db: Session, user_id: str):
     return db.query(models.Users).filter(models.Users.user_id == user_id).first()
 
 
-def get_users(db: Session,  skip: int = 0, limit: int = 1000):
+def get_users(db: Session, skip: int = 0, limit: int = 1000):
     # read-only transaction
     # db.connection(execution_options={"read_only": True})
     return db.query(models.Users).offset(skip).limit(limit).all()
@@ -41,7 +42,7 @@ def get_score(db: Session, score_id: str):
     return db.query(models.Scores).filter(models.Scores.score_id == score_id).first()
 
 
-def get_scores(db: Session,  skip: int = 0, limit: int = 1000):
+def get_scores(db: Session, skip: int = 0, limit: int = 1000):
     return db.query(models.Scores).offset(skip).limit(limit).all()
 
 

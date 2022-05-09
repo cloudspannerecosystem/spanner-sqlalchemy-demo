@@ -10,6 +10,7 @@ SQL_LOG = environ.get("SQL_LOG")
 
 if SQL_LOG:
     import logging
+
     logging.basicConfig()
     logging.getLogger("sqlalchemy.engine").setLevel(logging.INFO)
 

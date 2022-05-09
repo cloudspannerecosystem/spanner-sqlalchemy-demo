@@ -99,9 +99,11 @@ chmod u+x spanner_emulator_setup.sh
 ./spanner_emulator_setup.sh
 ```
 
-Set an environment variable which are needed for the following steps.
+Set environment variables which are needed for the following steps.
 ```shell
 export SPANNER_EMULATOR_HOST=localhost:9010
+export K_SERVICE=spanner-sqlalchemy-demo
+export K_REVISION=spanner-sqlalchemy-demo-00001-thx
 ```
 
 Run the unit test.
