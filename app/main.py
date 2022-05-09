@@ -1,9 +1,12 @@
+from os import environ
 from fastapi import Depends, FastAPI, HTTPException, Response, status
 from sqlalchemy.orm import Session
 
 from app import crud, schemas
 from app.database import SessionLocal
 
+CLOUD_RUN_SERVICE = environ.get("K_SERVICE", "")
+CLOUD_RUN_REVISION = environ.get("K_REVISION", "")
 
 app = FastAPI(docs_url="/")
 
@@ -20,6 +23,9 @@ def get_db():
 def read_health():
     return {"health": "true"}
 
+@app.get("/cloud-run-info/")
+def read_cloud_run_info():
+    return {"service": CLOUD_RUN_SERVICE, "revision": CLOUD_RUN_REVISION}
 
 @app.get("/users/", response_model=list[schemas.Users])
 def read_users(skip: int = 0, limit: int = 1000, db: Session = Depends(get_db)):
