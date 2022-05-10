@@ -1,4 +1,6 @@
 # Cloud Spanner + SQLAlchemy demo 
+[![pytest & flake8](https://github.com/kazshinohara/spanner-sqlalchemy-demo/actions/workflows/pytest_flake8.yaml/badge.svg)](https://github.com/kazshinohara/spanner-sqlalchemy-demo/actions/workflows/pytest_flake8.yaml)  
+
 This is a demo application for [Cloud Spanner SQLAlchemy ORM](https://github.com/googleapis/python-spanner-sqlalchemy).  
 A simple ranking API for gaming use cases.
 
