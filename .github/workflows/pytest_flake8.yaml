@@ -1,0 +1,59 @@
+name: pytest & flake8
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  PROJECT_ID: kzs-sandbox
+  INSTANCE_ID: demo
+  DATABASE_ID: ranking
+  SPANNER_EMULATOR_HOST: "localhost:9010"
+  K_SERVICE: spanner-sqlalchemy-demo
+  K_REVISION: spanner-sqlalchemy-demo-00001-thx
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9"]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install poetry
+      run: |
+        curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+        echo "$HOME/.poetry/bin" >> $GITHUB_PATH
+    - name: Poetry Version
+      run: |
+        poetry --version
+    - name: Poetry Install Dependencies
+      run: |
+        poetry install --no-interaction
+    - name: Run Cloud Spanner emulator
+      run: |
+        docker run -d -p 9010:9010 -p 9020:9020 gcr.io/cloud-spanner-emulator/emulator
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v0
+    - name: Check gcloud CLI working
+      run: gcloud info
+    - name: Set up Cloud Spanner emulator
+      run: |
+        cd ./tests 
+        chmod u+x spanner_emulator_setup.sh
+        ./spanner_emulator_setup.sh
+    - name: Test with pytest
+      run: |
+        poetry run pytest
+    - name: Lint with flake8
+      run: |
+        poetry run flake8 . --count --max-line-length=120 --max-complexity=10 --show-source --statistics
