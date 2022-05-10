@@ -6,24 +6,14 @@ A simple ranking API for gaming use cases.
 
 ## Building blocks
 * Language: [Python 3](https://docs.python.org/3/)
+* Python package and virtualenv tool: [Poetry](https://github.com/python-poetry/poetry)
 * Framework: [FastAPI](https://fastapi.tiangolo.com/)
 * ORM: [SQLAlchemy](https://www.sqlalchemy.org/)
 * Migration tool: [Alembic](https://alembic.sqlalchemy.org/en/latest/)
 * Server: [Cloud Run](https://cloud.google.com/run/)
 * DB: [Cloud Spanner](https://cloud.google.com/spanner/)
 * Container registry: [Artifact Registry](https://cloud.google.com/artifact-registry/)
-* CI/CD: [Cloud Build](https://cloud.google.com/build/) 
-
-
-## TODO
-- Implement PUT/DELETE [DONE]
-- Resolve "stalenesss error" [Waiting for v1.1.0 available from PyPI]
-- Adapt Alembic [DONE]
-- Implement unit tests w/ Cloud Spanner emulator [DONE]
-- Containerization [DONE]
-- Deploy to Cloud Run [DONE]
-- Set up Cloud Build (lint check, unit test, build image etc.)
-
+* CI/CD: [GitHub Actions](https://github.co.jp/features/actions) 
 
 # For who want to play with this code
 ## 1. install dependencies to your local machine
