@@ -14,6 +14,7 @@
 
 import uuid
 
+from sqlalchemy import desc
 from sqlalchemy.orm import Session
 
 from app import models, schemas
@@ -53,11 +54,55 @@ def delete_user(db: Session, user_id: str):
 
 
 def get_score(db: Session, score_id: str):
-    return db.query(models.Scores).filter(models.Scores.score_id == score_id).first()
+    db_score = db.query(
+        models.Scores.score_id.label("score_id"),
+        models.Scores.score.label("score"),
+        models.Scores.created_at.label("created_at"),
+        models.Scores.updated_at.label("updated_at"),
+        models.Users.user_id.label("user_id"),
+        models.Users.name.label("user_name")).\
+        join(models.Users, models.Scores.user_id == models.Users.user_id).\
+        filter(models.Scores.score_id == score_id).first()
+    return db_score
 
 
-def get_scores(db: Session, skip: int = 0, limit: int = 1000):
-    return db.query(models.Scores).offset(skip).limit(limit).all()
+def get_scores(db: Session, base_score: int = 9000, skip: int = 0, limit: int = 1000):
+    """
+    SELECT
+      scores.score_id AS score_id,
+      scores.score AS score,
+      scores.created_at AS created_at,
+      scores.updated_at AS updated_at,
+      users.user_id AS user_id,
+      users.name AS user_name
+    FROM
+      scores @{FORCE_INDEX=ix_scores_score}
+    JOIN
+      users
+    ON
+      scores.user_id = users.user_id
+    WHERE
+      scores.score >= 9000
+    ORDER BY
+      scores.score DESC
+    LIMIT
+      1000
+    OFFSET
+      0
+    """
+    db_scores = db.query(
+        models.Scores.score_id.label("score_id"),
+        models.Scores.score.label("score"),
+        models.Scores.created_at.label("created_at"),
+        models.Scores.updated_at.label("updated_at"),
+        models.Users.user_id.label("user_id"),
+        models.Users.name.label("user_name")).\
+        join(models.Users, models.Scores.user_id == models.Users.user_id).\
+        filter(models.Scores.score >= base_score).\
+        order_by(desc(models.Scores.score)).\
+        with_hint(selectable=models.Scores, text="@{FORCE_INDEX=ix_scores_score}").\
+        offset(skip).limit(limit).all()
+    return db_scores
 
 
 def create_score(db: Session, score: schemas.ScoresBase):

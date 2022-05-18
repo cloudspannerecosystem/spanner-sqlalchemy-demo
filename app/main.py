@@ -26,7 +26,7 @@ CLOUD_RUN_REVISION = environ.get("K_REVISION", "")
 
 app = FastAPI(docs_url="/")
 
-# to supress the known error's stack trace
+# To supress the known error's stack trace
 # https://github.com/googleapis/python-spanner-sqlalchemy/issues/192
 sys.tracebacklimit = 0
 
@@ -80,8 +80,15 @@ def delete_user(user_id: str, db: Session = Depends(get_db)):
 
 
 @app.get("/scores/", response_model=list[schemas.Scores])
-def read_scores(skip: int = 0, limit: int = 1000, db: Session = Depends(get_db)):
-    scores = crud.get_scores(db, skip=skip, limit=limit)
+def read_scores(base_score: int = 9000, skip: int = 0, limit: int = 1000, db: Session = Depends(get_db)):
+    """
+    By default, this api returns scores which have >= 9000.
+
+    If you like to get scores which have >= 1000, you should set "base_score: 1000".
+
+    If you like to get top 10 scores, you should set "limit: 10".
+    """
+    scores = crud.get_scores(db, base_score=base_score, skip=skip, limit=limit)
     return scores
 
 

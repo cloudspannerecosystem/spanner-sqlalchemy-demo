@@ -92,16 +92,20 @@ def test_read_scores(test_db):
     test_db.flush()
     test_db.commit()
 
-    score1 = models.Scores(user_id=user1.user_id, score_id=str(uuid.uuid4()), score=100)
-    score2 = models.Scores(user_id=user2.user_id, score_id=str(uuid.uuid4()), score=200)
-    test_db.add_all([score1, score2])
+    score1 = models.Scores(user_id=user1.user_id, score_id=str(uuid.uuid4()), score=8000)
+    score2 = models.Scores(user_id=user2.user_id, score_id=str(uuid.uuid4()), score=9900)
+    score3 = models.Scores(user_id=user1.user_id, score_id=str(uuid.uuid4()), score=10000)
+    score4 = models.Scores(user_id=user2.user_id, score_id=str(uuid.uuid4()), score=9500)
+    score5 = models.Scores(user_id=user1.user_id, score_id=str(uuid.uuid4()), score=9300)
+    score6 = models.Scores(user_id=user2.user_id, score_id=str(uuid.uuid4()), score=9800)
+    test_db.add_all([score6, score5, score4, score3, score2, score1])
     test_db.flush()
     test_db.commit()
 
     response = client.get("/scores")
 
     assert response.status_code == 200
-    assert response.json()[0]["score"] == 100 or 200
+    assert response.json()[0]["score"] == 10000
 
 
 def test_read_score(test_db):

@@ -38,6 +38,7 @@ class ScoresBase(BaseModel):
 
 class Scores(ScoresBase):
     score_id: str
+    user_name: Optional[str]
     created_at: datetime
     updated_at: Optional[datetime]
 
