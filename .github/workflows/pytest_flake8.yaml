@@ -56,4 +56,5 @@ jobs:
         poetry run pytest
     - name: Lint with flake8
       run: |
+        cd ../
         poetry run flake8 . --count --max-line-length=120 --max-complexity=10 --show-source --statistics
