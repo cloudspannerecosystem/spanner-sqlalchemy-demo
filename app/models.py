@@ -15,9 +15,12 @@
 from datetime import datetime
 
 from sqlalchemy import Column, String, DateTime, Integer
+from sqlalchemy.dialects import registry
 from sqlalchemy.ext.declarative import declarative_base
 
+
 Base = declarative_base()
+registry.register("spanner", "google.cloud.sqlalchemy_spanner", "SpannerDialect")
 
 
 class Users(Base):

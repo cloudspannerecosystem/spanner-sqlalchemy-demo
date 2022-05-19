@@ -44,7 +44,7 @@ target_metadata = Base.metadata
 
 
 class SpannerImpl(DefaultImpl):
-    __dialect__ = "spanner"
+    __dialect__ = "spanner+spanner"
 
 
 def run_migrations_offline():
@@ -81,7 +81,7 @@ def run_migrations_online():
     configuration = config.get_section(config.config_ini_section)
     configuration["sqlalchemy.url"] = DATABASE_URL
     connectable = engine_from_config(
-        configuration, prefix="sqlalchemy.", poolclass=pool.NullPool,
+        configuration, prefix="sqlalchemy.", poolclass=pool.QueuePool,
     )
 
     with connectable.connect() as connection:

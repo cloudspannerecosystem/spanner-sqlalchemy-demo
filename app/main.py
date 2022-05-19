@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sys
 from os import environ
 
 from fastapi import Depends, FastAPI, HTTPException, Response, status
@@ -25,10 +24,6 @@ CLOUD_RUN_SERVICE = environ.get("K_SERVICE", "")
 CLOUD_RUN_REVISION = environ.get("K_REVISION", "")
 
 app = FastAPI(docs_url="/")
-
-# To supress the known error's stack trace
-# https://github.com/googleapis/python-spanner-sqlalchemy/issues/192
-sys.tracebacklimit = 0
 
 
 def get_db():
