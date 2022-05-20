@@ -1,5 +1,6 @@
 # Cloud Spanner + SQLAlchemy demo 
-[![pytest & flake8](https://github.com/kazshinohara/spanner-sqlalchemy-demo/actions/workflows/pytest_flake8.yaml/badge.svg)](https://github.com/kazshinohara/spanner-sqlalchemy-demo/actions/workflows/pytest_flake8.yaml)  
+[![pytest & flake8](https://github.com/kazshinohara/spanner-sqlalchemy-demo/actions/workflows/pytest_flake8.yaml/badge.svg)](https://github.com/kazshinohara/spanner-sqlalchemy-demo/actions/workflows/pytest_flake8.yaml) 
+[![docker_build](https://github.com/kazshinohara/spanner-sqlalchemy-demo/actions/workflows/docker_build.yaml/badge.svg)](https://github.com/kazshinohara/spanner-sqlalchemy-demo/actions/workflows/docker_build.yaml) 
 
 This is a demo application for [Cloud Spanner SQLAlchemy ORM](https://github.com/googleapis/python-spanner-sqlalchemy).  
 A simple ranking API for gaming use cases.
