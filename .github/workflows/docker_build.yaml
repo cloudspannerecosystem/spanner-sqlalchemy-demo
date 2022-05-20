@@ -1,0 +1,45 @@
+name: docker_build
+
+on:
+  push:
+    tags:
+      - "v*"
+
+env:
+  PROJECT_ID: ${{ secrets.PROJECT_ID }}
+  PROJECT_NUMBER: ${{ secrets.PROJECT_NUMBER }}
+
+jobs:
+  build:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: 'Authenticate to Google Cloud'
+        id: auth_to_gc
+        uses: 'google-github-actions/auth@v0'
+        with:
+          workload_identity_provider: 'projects/${{ env.PROJECT_NUMBER }}/locations/global/workloadIdentityPools/github-actions/providers/github-actions'
+          service_account: 'github-actions@${{ env.PROJECT_ID }}.iam.gserviceaccount.com'
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
+
+      - name: gcloud auth login by workload identity
+        run: gcloud auth login --brief --cred-file="${{ steps.auth_to_gc.outputs.credentials_file_path }}"
+
+      - name: Configure docker to use the gcloud
+        run: gcloud auth configure-docker asia-northeast1-docker.pkg.dev --quiet
+
+      - name: Get TAG
+        run: echo "TAG=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
+      - name: Build a docker image
+        run: docker build -t asia-northeast1-docker.pkg.dev/${{ env.PROJECT_ID }}/public/spanner-sqlalchemy-demo:${{ env.TAG }} .
+
+      - name: Push the docker image to Artifact Registry
+        run: docker push asia-northeast1-docker.pkg.dev/${{ env.PROJECT_ID }}/public/spanner-sqlalchemy-demo:${{ env.TAG }}
