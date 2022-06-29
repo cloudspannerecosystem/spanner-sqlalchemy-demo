@@ -10,7 +10,7 @@ fastapi = "^0.78.0"
 uvicorn = "^0.18.2"
 sqlalchemy-spanner = "^1.2.0"
 SQLAlchemy-Utils = "^0.38.2"
-alembic = "^1.7.6"
+alembic = "^1.8.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
