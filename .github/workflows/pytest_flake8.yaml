@@ -7,6 +7,7 @@ on:
     branches: [ main ]
 
 env:
+  PROJECT_ID: kzs-sandbox
   INSTANCE_ID: demo
   DATABASE_ID: ranking
   SPANNER_EMULATOR_HOST: "localhost:9010"
@@ -57,8 +58,6 @@ jobs:
       run: |
         chmod u+x spanner_emulator_setup.sh
         ./spanner_emulator_setup.sh
-      env:
-        PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
     - name: Test with pytest
       working-directory: tests
