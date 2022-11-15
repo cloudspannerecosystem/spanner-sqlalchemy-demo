@@ -14,7 +14,7 @@ alembic = "^1.8.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^5.0.4"
-mypy = "^0.961"
+mypy = "^0.991"
 black = "^22.6.0"
 isort = "^5.10.1"
 pytest = "^7.1.2"
