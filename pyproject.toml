@@ -6,7 +6,7 @@ authors = ["kazshinohara <kazshinohara@gcpx.org>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-fastapi = "^0.87.0"
+fastapi = "^0.94.1"
 uvicorn = "^0.20.0"
 sqlalchemy-spanner = "^1.2.2"
 SQLAlchemy-Utils = "^0.38.3"
