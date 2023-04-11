@@ -1091,14 +1091,14 @@ tracing = ["opentelemetry-api (>=1.1.0)", "opentelemetry-instrumentation (>=0.20
 
 [[package]]
 name = "sqlalchemy-utils"
-version = "0.38.3"
+version = "0.40.0"
 description = "Various utility functions for SQLAlchemy."
 category = "main"
 optional = false
-python-versions = "~=3.6"
+python-versions = ">=3.6"
 files = [
-    {file = "SQLAlchemy-Utils-0.38.3.tar.gz", hash = "sha256:9f9afba607a40455cf703adfa9846584bf26168a0c5a60a70063b70d65051f4d"},
-    {file = "SQLAlchemy_Utils-0.38.3-py3-none-any.whl", hash = "sha256:5c13b5d08adfaa85f3d4e8ec09a75136216fad41346980d02974a70a77988bf9"},
+    {file = "SQLAlchemy-Utils-0.40.0.tar.gz", hash = "sha256:af803089a7929803faeb6173b90f29d1a67ad02f1d1e732f40b054a8eb3c7370"},
+    {file = "SQLAlchemy_Utils-0.40.0-py3-none-any.whl", hash = "sha256:4c7098d4857d5cad1248bf7cd940727aecb75b596a5574b86a93b37079929520"},
 ]
 
 [package.dependencies]
@@ -1212,4 +1212,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "752d21327bbc661870c0334a04407e926c4b978f1efb99d3b313bef1b3e0a9c0"
+content-hash = "c40cae99fe244371619d1d5764bda6c88e11e6b608f95c5d07634babe81e77d1"
