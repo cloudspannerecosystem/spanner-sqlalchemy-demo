@@ -14,7 +14,7 @@ alembic = "^1.8.1"
 httpx = "^0.23.3"
 
 [tool.poetry.dev-dependencies]
-flake8 = "^5.0.4"
+flake8 = "^6.0.0"
 mypy = "^0.991"
 black = "^23.1.0"
 isort = "^5.12.0"
