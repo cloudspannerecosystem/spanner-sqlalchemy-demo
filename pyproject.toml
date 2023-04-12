@@ -10,7 +10,7 @@ fastapi = "^0.95.0"
 uvicorn = "^0.21.1"
 sqlalchemy-spanner = "^1.2.2"
 SQLAlchemy-Utils = "^0.40.0"
-alembic = "^1.8.1"
+alembic = "^1.10.3"
 httpx = "^0.23.3"
 
 [tool.poetry.dev-dependencies]
