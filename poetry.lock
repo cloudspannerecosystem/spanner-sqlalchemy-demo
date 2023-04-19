@@ -1031,14 +1031,14 @@ pymysql = ["pymysql", "pymysql (<1)"]
 
 [[package]]
 name = "sqlalchemy-spanner"
-version = "1.4.0"
+version = "1.5.0"
 description = "SQLAlchemy dialect integrated into Cloud Spanner database"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "sqlalchemy-spanner-1.4.0.tar.gz", hash = "sha256:48425d88222db354cc819b4179c03cf6b103355b009e04f4183bd462ffb8fc91"},
-    {file = "sqlalchemy_spanner-1.4.0-py3-none-any.whl", hash = "sha256:05d70b0201d9c418a83678872ead14763169784f88bfdab6750bdff448a2d419"},
+    {file = "sqlalchemy-spanner-1.5.0.tar.gz", hash = "sha256:b962da26615b9466200e081ce43156922234e2b123ccc691b2907be062a32170"},
+    {file = "sqlalchemy_spanner-1.5.0-py3-none-any.whl", hash = "sha256:e0ab9ea7e7722205bfe62415b4682986194608f6b319931a19374a91ff0be01f"},
 ]
 
 [package.dependencies]
@@ -1172,4 +1172,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "b17600d16a970c43eb38e8b63e9c1791f1e49d19bab1e5a15f9427d0c22e1fb7"
+content-hash = "ce685932cb143ea8dd6cdb954a262fa0d42eb6aed170b07fad51db7f74b58048"
