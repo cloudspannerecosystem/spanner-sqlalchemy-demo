@@ -9,7 +9,7 @@ python = "^3.9"
 fastapi = "^0.95.0"
 uvicorn = "^0.21.1"
 sqlalchemy-spanner = "^1.6.2"
-SQLAlchemy-Utils = "^0.40.0"
+SQLAlchemy-Utils = "^0.41.1"
 alembic = "^1.10.3"
 httpx = "^0.24.0"
 
