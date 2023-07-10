@@ -983,13 +983,13 @@ pymysql = ["pymysql", "pymysql (<1)"]
 
 [[package]]
 name = "sqlalchemy-spanner"
-version = "1.4.0"
+version = "1.6.2"
 description = "SQLAlchemy dialect integrated into Cloud Spanner database"
 optional = false
 python-versions = "*"
 files = [
-    {file = "sqlalchemy-spanner-1.4.0.tar.gz", hash = "sha256:48425d88222db354cc819b4179c03cf6b103355b009e04f4183bd462ffb8fc91"},
-    {file = "sqlalchemy_spanner-1.4.0-py3-none-any.whl", hash = "sha256:05d70b0201d9c418a83678872ead14763169784f88bfdab6750bdff448a2d419"},
+    {file = "sqlalchemy-spanner-1.6.2.tar.gz", hash = "sha256:093aed5b46d75a075a259d7aa8fbead4924190535461756cd6b86e19f1592c58"},
+    {file = "sqlalchemy_spanner-1.6.2-py3-none-any.whl", hash = "sha256:901d5fe35d105baf58dce9f8098e903f399e9d6f9ccd027964bea853c9e4e507"},
 ]
 
 [package.dependencies]
