@@ -11,7 +11,7 @@ uvicorn = "^0.21.1"
 sqlalchemy-spanner = "^1.6.2"
 SQLAlchemy-Utils = "^0.41.1"
 alembic = "^1.10.3"
-httpx = "^0.24.0"
+httpx = "^0.24.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^6.0.0"
